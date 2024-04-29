@@ -1,9 +1,7 @@
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
-    transition: background-color 0.3s ease;
+    color: #565656;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Adicionamos a transição de cor */
 }
 
 .container {
@@ -12,11 +10,24 @@ body {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease; /* Adicionamos a transição de cor */
+}
+
+.container.dark-theme {
+    background-color: #454545; /* Nova cor de fundo para o contêiner no modo escuro */
+    color: #ccc; /* Nova cor do texto para o contêiner no modo escuro */
+}
+
+
+.dark-theme {
+    background-color: #292929;
+    color: #ccc;
 }
 
 h1 {
     text-align: center;
+    color: inherit; /* Garante que a cor do texto do título siga a cor do body */
 }
 
 .task-input {
@@ -27,14 +38,14 @@ h1 {
 .task-input input {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #dcc7c7;
     border-radius: 4px;
     margin-right: 10px;
 }
 
 .task-input button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color:#0b62c0;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -49,14 +60,15 @@ ul {
 li {
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #f9f9f9;
+    background-color: #eeeeee;
     border-radius: 4px;
     position: relative;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Adicionamos transform para uma animação mais suave */
 }
 
 li:hover {
     background-color: #e0e0e0;
+    transform: scale(1.05); /* Aumenta um pouco o tamanho no hover */
 }
 
 .theme-toggle {
@@ -66,9 +78,16 @@ li:hover {
 
 .theme-toggle button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #0b62c0;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.dark-theme #task-list li {
+    background-color: #454545; /* Cor de fundo das tarefas no modo escuro */
+    color: #fff; /* Cor do texto das tarefas no modo escuro */
+    border-radius: 4px;
+    border: 1px solid #fff; /* Cor da borda das tarefas no modo escuro */
 }
