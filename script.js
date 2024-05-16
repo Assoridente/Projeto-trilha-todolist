@@ -82,10 +82,54 @@ function toggleTheme() {
     const body = document.querySelector('body'); // Seleciona o elemento body
     container.classList.toggle('dark-theme');
     body.classList.toggle('dark-theme'); // Adiciona ou remove a classe dark-theme do body
+    
+    // Obtém o elemento do ícone do tema
+    const themeIcon = document.getElementById('theme-icon');
+
+    // Obtém o elemento do botão de alternância de tema
+    const themeToggleButton = document.getElementById('theme-toggle-button'); // <- Aqui parece estar o problema
+
+    // Alterna entre os ícones de lua e sol
+    if (themeIcon.classList.contains('bi-brightness-high-fill')) {
+        themeIcon.classList.remove('bi-brightness-high-fill');
+        themeIcon.classList.add('bi-moon-fill');
+    } else {
+        themeIcon.classList.remove('bi-moon-fill');
+        themeIcon.classList.add('bi-brightness-high-fill');
+    }
 }
+
 
 // Função para verificar se a tarefa já existe na lista
 function isTaskDuplicate(taskName) {
     return tasksAdded.includes(taskName);
 }
 
+// Função para iniciar o temporizador
+function startTimer(duration, display) {
+    let timer = duration;
+    setInterval(function () {
+        let minutes = parseInt(timer / 60, 10);
+        let seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+            // Aqui você pode exibir a notificação de lembrete de descanso
+            // Por exemplo:
+            // alert("É hora de fazer uma pausa de 5 minutos!");
+            alert("Faça uma pequena pausa, você está indo muito bem!")
+            // Ou você pode usar uma biblioteca de notificação como a Notification API
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    const twentyMinutes = 60 * 20; // 20 minutos em segundos
+    const display = document.querySelector('#timer');
+    startTimer(twentyMinutes, display);
+};

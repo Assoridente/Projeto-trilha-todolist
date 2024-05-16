@@ -5,13 +5,19 @@ body {
 }
 
 .container {
+    width: 70%; /* Definindo a largura do container de tarefas como 60% da tela */
     max-width: 600px;
-    margin: 50px auto;
+    margin: 50px 20px; /* Adicionei um espaçamento de 20px à esquerda */
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease; /* Adicionamos a transição de cor */
+    text-align: left; /* Alinha todo o conteúdo do contêiner à esquerda */
+}
+
+#task-list {
+    text-align: left; /* Alinhar conteúdo do task-list à esquerda */
 }
 
 .container.dark-theme {
@@ -19,28 +25,14 @@ body {
     color: #ccc; /* Nova cor do texto para o contêiner no modo escuro */
 }
 
-
 .dark-theme {
     background-color: #292929;
     color: #ccc;
 }
 
 h1 {
-    text-align: center;
+    text-align: left;
     color: inherit; /* Garante que a cor do texto do título siga a cor do body */
-}
-
-.task-input {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.task-input input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #dcc7c7;
-    border-radius: 4px;
-    margin-right: 10px;
 }
 
 .task-input button {
@@ -50,6 +42,29 @@ h1 {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.task-input button:hover {
+    background-color: #0a549f; /* Altera a cor de fundo do botão no hover */
+}
+
+.task-input input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #dcc7c7;
+    border-radius: 4px;
+    margin-right: 20px;
+    width: calc(95% - 120px);
+}
+
+.task-input button {
+    padding: 10px 20px;
+    background-color:#0b62c0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px; /* Ajuste a margem direita */
 }
 
 ul {
@@ -76,13 +91,21 @@ li:hover {
     margin-bottom: 20px;
 }
 
-.theme-toggle button {
-    padding: 10px 20px;
-    background-color: #0b62c0;
+.theme-toggle-button {
+    float: right; /* Alinha o botão de alternância de tema à esquerda */
+    margin-bottom: 50px; /* Adiciona espaço entre o botão e o container */
+    padding: 15px 30px; /* Ajusta o tamanho do botão */
+    background-color: #393939;
     color: #fff;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     cursor: pointer;
+    margin-right: 20px;
+    transition: background-color 0.3s ease; /* Adicionamos a transição de cor */
+}
+
+.theme-toggle-button:hover {
+    background-color: #5d5f61; /* Altera a cor de fundo do botão no hover */
 }
 
 .dark-theme #task-list li {
@@ -90,4 +113,72 @@ li:hover {
     color: #fff; /* Cor do texto das tarefas no modo escuro */
     border-radius: 4px;
     border: 1px solid #fff; /* Cor da borda das tarefas no modo escuro */
+}
+
+.wrapper {
+    display: flex;
+}
+
+.timer-container {
+    width: 30%; /* Definindo a largura do container do temporizador como 40% da tela */
+    max-width: 600px;
+    margin-top: 50px;
+    margin-left: 20px; /* Adicione uma margem à esquerda para separá-lo do container de tarefas */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease; /* Adicione a transição de cor */
+    text-align: left;
+}
+
+.timer-container h1 {
+    margin-bottom: 10px;
+}
+
+.timer-controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.timer-controls input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+.timer-controls button {
+    /* Adicionando ícones do Bootstrap aos botões */
+    background-color: #0b62c0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#timer-display {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Ícone para o botão de começar */
+#start-timer::before {
+    content: "\f144"; /* Código do ícone de play do Bootstrap */
+    font-family: "Bootstrap Icons";
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Ícone para o botão de pausar */
+#pause-timer::before {
+    content: "\f28b"; /* Código do ícone de pause do Bootstrap */
+    font-family: "Bootstrap Icons";
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Ícone para o botão de reiniciar */
+#reset-timer::before {
+    content: "\f01e"; /* Código do ícone de refresh do Bootstrap */
+    font-family: "Bootstrap Icons";
+    margin-right: 5px; /* Espaçamento entre o ícone e o texto */
 }
